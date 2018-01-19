@@ -1,10 +1,19 @@
 exports.handler = (event, context, callback) => {
     // TODO implement
     let num = parseInt(event.num);
-    let fact = 1;
-    for(let i = num; i >= 1; i--) {
-        fact*=i;
+    if(num < 0) {
+        callback(null, "Input number is negative !");
     }
-    let msg = `Factorial of ${num} is ${fact}`;
-    callback(null, msg);
+    else if( num == 0) {
+        callback(null, "Factorial of 0 is 1");
+    }
+    else {
+        let fact = 1;
+        for(let i = num; i >= 1; i--) {
+            fact*=i;
+        }
+        let msg = `Factorial of ${num} is ${fact}`;
+        callback(null, msg);
+    }
+   
 };
